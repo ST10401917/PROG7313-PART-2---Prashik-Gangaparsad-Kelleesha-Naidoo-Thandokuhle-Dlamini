@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PROG7313BudgetTrackerApp">
         <activity
+            android:name=".ReportPage"
+            android:exported="false" />
+        <activity
             android:name=".RegisterPage"
             android:exported="false" />
         <activity

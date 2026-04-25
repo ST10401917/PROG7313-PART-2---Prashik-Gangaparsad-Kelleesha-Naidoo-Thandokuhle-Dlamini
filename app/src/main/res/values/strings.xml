@@ -6,4 +6,10 @@
     <string name="registerbtn">Register</string>
     <string name="already_have_an_account_login_here">Already have an account? Login here</string>
     <string name="username">Username</string>
+    <string name="enter_a_ending_date">Enter a ending date</string>
+    <string name="filter_expenses">Filter expenses</string>
+    <string name="enter_a_starting_date">Enter a starting date</string>
+    <string name="report">Report</string>
+    <string name="expenses_will_appear_here">Expenses will appear here</string>
+    <string name="total_r0_00">Total R0.00</string>
 </resources>
