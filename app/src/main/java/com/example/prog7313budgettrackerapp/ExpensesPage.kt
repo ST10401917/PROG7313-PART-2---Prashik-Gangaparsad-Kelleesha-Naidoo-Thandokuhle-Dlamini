@@ -3,7 +3,6 @@ package com.example.prog7313budgettrackerapp
 import Data.Expense
 import Data.MonthlyGoal
 import Data.database.AppDatabase
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.widget.Button
@@ -51,12 +50,6 @@ class ExpensesPage : AppCompatActivity() {
         addPhotobtn = findViewById(R.id.AddPhotobtn)
 
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
         dateText.setOnClickListener {
             showDatePicker()
         }
@@ -74,6 +67,14 @@ class ExpensesPage : AppCompatActivity() {
                 saveGoals()
             }
         }
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+
     }
     private fun saveExpense(){
         val category = categoryText.text.toString().trim()
@@ -167,7 +168,6 @@ class ExpensesPage : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("DefaultLocale")
     private fun showDatePicker() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
