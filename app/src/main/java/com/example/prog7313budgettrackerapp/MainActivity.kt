@@ -73,6 +73,8 @@ class MainActivity : AppCompatActivity() {
                 if (foundUser != null) {
                     Toast.makeText(this@MainActivity, "Login successful", Toast.LENGTH_SHORT).show()
 
+                    //Go to the home screen once successful
+                    openHomePage(foundUser.username)
 
                 } else{
                     Toast.makeText(this@MainActivity, "Login Failed!", Toast.LENGTH_SHORT).show()
@@ -85,6 +87,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
+    private fun openHomePage(username: String){
+        val intent = Intent(this, HomePage::class.java)
+        startActivity(intent)
+        finish()
+    }
 
 }
