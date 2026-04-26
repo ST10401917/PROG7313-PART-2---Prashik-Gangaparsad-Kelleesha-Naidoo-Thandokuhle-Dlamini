@@ -2,9 +2,13 @@ package com.example.prog7313budgettrackerapp
 
 import Data.database.AppDatabase
 import android.app.DatePickerDialog
+import android.net.Uri
 import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -22,7 +26,8 @@ class ReportPage : AppCompatActivity() {
     private lateinit var endingDate : EditText // ending date
     private lateinit var filter_Expenses : Button // filter expenses
     private lateinit var textView9 : TextView // display total
-    private lateinit var textView10 : TextView // expenses will appear here
+
+    private lateinit var expenseListContainer : LinearLayout // container for expenses
 
     private lateinit var db: AppDatabase
 
@@ -38,7 +43,7 @@ class ReportPage : AppCompatActivity() {
         endingDate = findViewById(R.id.endingDate)
         filter_Expenses = findViewById(R.id.filter_Expenses)
         textView9 = findViewById(R.id.textView9)
-        textView10 = findViewById(R.id.textView10)
+        expenseListContainer = findViewById(R.id.expenseListContainer)
 
 
         // Set click listeners
@@ -105,31 +110,55 @@ class ReportPage : AppCompatActivity() {
             // Retrieve the expenses between selected dates from Room database
             val filteredExpenses = db.expenseDao().getExpensesBetweenDates(startDate, endDate)
 
-            // Check to see if no expenses were found
-            if (filteredExpenses.isEmpty()) {
-                runOnUiThread {
-                    textView10.text = "No expenses found between the selected dates"
-                    textView9.text = "Total: R0.00"
-                }
-                return@launch
-            }
-
-
-            var resultsText = ""
-            var totalAmount = 0.0
-
-            // Loop through each expense record
-            for (expense in filteredExpenses) {
-                resultsText += "Category: ${expense.category}\n"
-                resultsText += "Amount: R${expense.amount}\n"
-                resultsText += "Date: ${expense.date}\n"
-                resultsText += "Description: ${expense.description}\n\n"
-
-                totalAmount += expense.amount
-            }
-
             runOnUiThread {
-                textView10.text = resultsText
+                // Clear previous results
+                expenseListContainer.removeAllViews()
+
+                // Check to see if no expenses were found
+                if (filteredExpenses.isEmpty()) {
+                    val noResultsText = TextView(this@ReportPage)
+                    noResultsText.text = "No expenses found between the selected dates"
+                    expenseListContainer.addView(noResultsText)
+                    textView9.text = "Total: R0.00"
+                    return@runOnUiThread
+                }
+
+                var totalAmount = 0.0
+
+                // Loop through each expense record
+                for (expense in filteredExpenses) {
+                    // Create a container for each expense
+                    val itemLayout = LinearLayout(this@ReportPage)
+                    itemLayout.orientation = LinearLayout.VERTICAL
+                    itemLayout.setPadding(0, 0, 0, 32)
+
+                    // Text details
+                    val detailsTextView = TextView(this@ReportPage)
+                    detailsTextView.text = "Category: ${expense.category}\nAmount: R${expense.amount}\nDate: ${expense.date}\nDescription: ${expense.description}"
+                    detailsTextView.textSize = 16f
+                    itemLayout.addView(detailsTextView)
+
+                    // Display image if available
+                    if (!expense.photoUri.isNullOrEmpty()) {
+                        val imageView = ImageView(this@ReportPage)
+                        val layoutParams = LinearLayout.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            600 // Fixed height for preview
+                        )
+                        imageView.layoutParams = layoutParams
+                        imageView.scaleType = ImageView.ScaleType.CENTER_INSIDE
+                        try {
+                            imageView.setImageURI(Uri.parse(expense.photoUri))
+                            itemLayout.addView(imageView)
+                        } catch (e: Exception) {
+                            // Handle error (e.g., permission issues)
+                        }
+                    }
+
+                    expenseListContainer.addView(itemLayout)
+                    totalAmount += expense.amount
+                }
+
                 textView9.text = "Total: R%.2f".format(totalAmount)
             }
         }

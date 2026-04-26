@@ -4,11 +4,15 @@ import Data.Expense
 import Data.MonthlyGoal
 import Data.database.AppDatabase
 import android.app.DatePickerDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -28,9 +32,11 @@ class ExpensesPage : AppCompatActivity() {
     private lateinit var savebtn2: Button
     private lateinit var categoryText: EditText
 
+
     private lateinit var db: AppDatabase
 
     private var selectedPhotoUri: String? = null
+    private lateinit var getImage: ActivityResultLauncher<Array<String>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +44,18 @@ class ExpensesPage : AppCompatActivity() {
         setContentView(R.layout.activity_expenses_page)
 
         db = AppDatabase.getDatabase(this)
+
+
+        getImage = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
+            uri?.let {
+
+                // Grant persistable permission so we can see the image in the report later
+                contentResolver.takePersistableUriPermission(it, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                selectedPhotoUri = it.toString()
+                Toast.makeText(this, "Photo selected", Toast.LENGTH_SHORT).show()
+                addPhotobtn.text = "Photo Added"
+            }
+        }
 
         categoryText = findViewById(R.id.CategoryText)
         amountText = findViewById(R.id.AmountText)
@@ -55,7 +73,7 @@ class ExpensesPage : AppCompatActivity() {
         }
 
         addPhotobtn.setOnClickListener {
-
+            getImage.launch(arrayOf("image/*"))
         }
 
         savebtn.setOnClickListener {
@@ -117,6 +135,7 @@ class ExpensesPage : AppCompatActivity() {
                 dateText.text.clear()
                 descipText.text.clear()
                 selectedPhotoUri = null
+                addPhotobtn.text = "Add a Photo"
             }
         }
 
