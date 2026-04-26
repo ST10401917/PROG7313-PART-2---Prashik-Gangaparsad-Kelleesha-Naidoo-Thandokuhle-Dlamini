@@ -28,6 +28,12 @@ class HomePage : AppCompatActivity() {
 
         //Set click listeners
 
+        expensebtn.setOnClickListener {
+            Toast.makeText(this,"Open the expenses screen", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, ExpensesPage::class.java)
+            startActivity(intent)
+        }
+
 
         reportsbtn.setOnClickListener {
             Toast.makeText(this,"Open the report screen", Toast.LENGTH_SHORT).show()
