@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExpensesPage"
+    tools:layout_editor_absoluteX="3dp"
+    tools:layout_editor_absoluteY="12dp">
+
+    <TextView
+        android:id="@+id/managingHeadText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/expensesHead"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/CategoryText"
+        android:layout_width="385dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/enter_category"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textColorHint="#546E7A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/managingHeadText" />
+
+    <EditText
+        android:id="@+id/AmountText"
+        android:layout_width="383dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:autofillHints="no"
+        android:ems="10"
+        android:hint="@string/enter_amount"
+        android:inputType="numberDecimal"
+        android:textColorHint="#546E7A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CategoryText" />
+
+    <EditText
+        android:id="@+id/DateText"
+        android:layout_width="382dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/enter_date"
+        android:inputType="date"
+        android:textColorHint="#546E7A"
+        app:layout_constraintTop_toBottomOf="@+id/AmountText"
+        tools:layout_editor_absoluteX="9dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/DescipText"
+        android:layout_width="388dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/enter_description"
+        android:inputType="text"
+        android:textColorHint="#546E7A"
+        app:layout_constraintTop_toBottomOf="@+id/DateText"
+        tools:layout_editor_absoluteX="7dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/AddPhotobtn"
+        android:layout_width="324dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/add_photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DescipText"
+        tools:ignore="VisualLintButtonSize" />
+
+    <Button
+        android:id="@+id/Savebtn"
+        android:layout_width="340dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="56dp"
+        android:text="@string/save_expense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/AddPhotobtn"
+        tools:ignore="DuplicateSpeakableTextCheck,VisualLintButtonSize" />
+
+    <TextView
+        android:id="@+id/MonthlyGoalText"
+        android:layout_width="143dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="72dp"
+        android:text="@string/monthly_goals"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Savebtn"
+        tools:ignore="TextSizeCheck" />
+
+    <EditText
+        android:id="@+id/MinGoal"
+        android:layout_width="391dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/enter_your_minimum_goal"
+        android:inputType="numberDecimal"
+        android:textColorHint="#546E7A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MonthlyGoalText" />
+
+    <EditText
+        android:id="@+id/MaxGoal"
+        android:layout_width="391dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/enter_your_maximum_goal"
+        android:inputType="numberDecimal"
+        android:textColorHint="#546E7A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MinGoal" />
+
+    <Button
+        android:id="@+id/Savebtn2"
+        android:layout_width="341dp"
+        android:layout_height="53dp"
+        android:text="@string/save_goal"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="629dp"
+        tools:ignore="MissingConstraints,VisualLintButtonSize" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

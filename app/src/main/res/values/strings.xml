@@ -23,4 +23,15 @@
     <string name="expenses">Expenses</string>
     <string name="reports">Reports</string>
     <string name="logout">Logout</string>
+    <string name="enter_category">Enter Category</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="enter_description">Enter Description</string>
+    <string name="enter_your_maximum_goal">Enter your maximum goal</string>
+    <string name="enter_your_minimum_goal">Enter your minimum goal</string>
+    <string name="monthly_goals">Monthly Goals</string>
+    <string name="expensesHead">Expenses</string>
+    <string name="enter_date">Enter Date</string>
+    <string name="save_expense">Save Expense</string>
+    <string name="save_goal">Save Goal</string>
+    <string name="add_photo">Add photo</string>
 </resources>
