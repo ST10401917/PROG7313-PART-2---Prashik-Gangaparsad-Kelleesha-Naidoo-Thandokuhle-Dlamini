@@ -5,108 +5,125 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#78DB7E"
+    android:background="#F8F9FA"
     tools:context=".RegisterPage">
+
+    <View
+        android:id="@+id/topHeader"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:background="#4CAF50"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/RegisterHeader"
-        android:layout_width="180dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="52dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/register"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:typeface="monospace"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextSizeCheck" />
-
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="378dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="48dp"
-        android:background="#F2EDED"
-        android:ems="10"
-        android:fontFamily="sans-serif-condensed"
-        android:hint="@string/username"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:textColorHint="#101010"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegisterHeader" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="374dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="44dp"
-        android:background="#F2EDED"
-        android:ems="10"
-        android:fontFamily="sans-serif-condensed"
-        android:hint="@string/password"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:textColorHint="#090909"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
-
-    <EditText
-        android:id="@+id/confirmPassword"
-        android:layout_width="374dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="44dp"
-        android:background="#F2EDED"
-        android:ems="10"
-        android:hint="@string/confirm_password"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:textColorHint="#101010"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.432"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
-
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="231dp"
-        android:layout_height="55dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:backgroundTint="#2196F3"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/registerbtn"
-        android:textColor="#121212"
-        android:textSize="16sp"
+        android:text="@string/register"
+        android:textColor="#0D47A1"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPassword"
-        tools:ignore="DuplicateSpeakableTextCheck" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/registerCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="-40dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/topHeader">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/usernameLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/username"
+                app:startIconDrawable="@android:drawable/ic_menu_edit">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/password"
+                app:passwordToggleEnabled="true"
+                app:startIconDrawable="@android:drawable/ic_lock_idle_lock">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/confirmPasswordLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/confirm_password"
+                app:passwordToggleEnabled="true"
+                app:startIconDrawable="@android:drawable/ic_lock_idle_lock">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/confirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/registerButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/registerbtn"
+                android:textAllCaps="false"
+                android:textColor="#263238"
+                android:textSize="16sp"
+                app:backgroundTint="#4CAF50"
+                app:cornerRadius="12dp"
+                tools:ignore="DuplicateSpeakableTextCheck,VisualLintButtonSize" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/toLoginButton"
-        android:layout_width="301dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="56dp"
-        android:backgroundTint="#2196F3"
-        android:fontFamily="sans-serif-black"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/already_have_an_account_login_here"
-        android:textColor="#101010"
-        android:textSize="14sp"
-        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textColor="#2E7D32"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerButton"
-        tools:ignore="TextSizeCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/registerCard" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

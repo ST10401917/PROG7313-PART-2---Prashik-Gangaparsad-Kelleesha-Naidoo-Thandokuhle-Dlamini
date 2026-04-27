@@ -1,190 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#78DB7E"
-    tools:context=".ExpensesPage"
-    tools:layout_editor_absoluteX="3dp"
-    tools:layout_editor_absoluteY="12dp">
+    android:background="#F8F9FA"
+    tools:context=".ExpensesPage">
 
-    <TextView
-        android:id="@+id/managingHeadText"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="@string/expensesHead"
-        android:textColor="#0F0E0E"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
-    <EditText
-        android:id="@+id/CategoryText"
-        android:layout_width="385dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="20dp"
-        android:background="#F2EDED"
-        android:ems="10"
-        android:fontFamily="sans-serif-condensed"
-        android:hint="@string/enter_category"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:textColor="#141313"
-        android:textColorHint="#37474F"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/managingHeadText" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#4CAF50"
+            app:title="@string/expensesHead"
+            app:titleCentered="true"
+            app:titleTextColor="#FFFFFF" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <EditText
-        android:id="@+id/AmountText"
-        android:layout_width="383dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
-        android:autofillHints="no"
-        android:background="#F2EDED"
-        android:ems="10"
-        android:fontFamily="sans-serif-condensed"
-        android:hint="@string/enter_amount"
-        android:inputType="numberDecimal"
-        android:textColorHint="#37474F"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CategoryText" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <EditText
-        android:id="@+id/DateText"
-        android:layout_width="382dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:autofillHints=""
-        android:background="#F2EDED"
-        android:ems="10"
-        android:fontFamily="sans-serif-condensed"
-        android:hint="@string/enter_date"
-        android:inputType="date"
-        android:textColor="#141313"
-        android:textColorHint="#191F23"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/AmountText"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="14dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <EditText
-        android:id="@+id/DescipText"
-        android:layout_width="388dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:autofillHints=""
-        android:background="#F2EDED"
-        android:ems="10"
-        android:fontFamily="sans-serif-condensed"
-        android:hint="@string/enter_description"
-        android:inputType="text"
-        android:textColorHint="#37474F"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/DateText"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="10dp" />
+            <!-- Log Expense Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
-    <Button
-        android:id="@+id/AddPhotobtn"
-        android:layout_width="324dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#3F51B5"
-        android:fontFamily="monospace"
-        android:text="@string/add_photo"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DescipText"
-        tools:ignore="VisualLintButtonSize" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-    <Button
-        android:id="@+id/Savebtn"
-        android:layout_width="340dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="56dp"
-        android:backgroundTint="#E91E63"
-        android:fontFamily="monospace"
-        android:text="@string/save_expense"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/AddPhotobtn"
-        tools:ignore="DuplicateSpeakableTextCheck,VisualLintButtonSize" />
+                    <TextView
+                        android:id="@+id/managingHeadText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="@string/log_new_expense"
+                        android:textColor="#333333"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/MonthlyGoalText"
-        android:layout_width="143dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="68dp"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/monthly_goals"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Savebtn"
-        tools:ignore="TextSizeCheck" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/enter_category"
+                        app:startIconDrawable="@android:drawable/ic_menu_agenda">
 
-    <EditText
-        android:id="@+id/MinGoal"
-        android:layout_width="391dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:autofillHints=""
-        android:background="#F2EDED"
-        android:ems="10"
-        android:fontFamily="sans-serif-condensed"
-        android:hint="@string/enter_your_minimum_goal"
-        android:inputType="numberDecimal"
-        android:textColorHint="#37474F"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MonthlyGoalText" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/CategoryText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            tools:ignore="TextContrastCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/MaxGoal"
-        android:layout_width="391dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
-        android:background="#F2EDED"
-        android:ems="10"
-        android:fontFamily="sans-serif-condensed"
-        android:hint="@string/enter_your_maximum_goal"
-        android:inputType="numberDecimal"
-        android:textColorHint="#37474F"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.35"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MinGoal" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/enter_amount"
+                        app:startIconDrawable="@android:drawable/ic_menu_send">
 
-    <Button
-        android:id="@+id/Savebtn2"
-        android:layout_width="341dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/save_goal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MaxGoal"
-        tools:ignore="MissingConstraints,VisualLintButtonSize" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/AmountText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            tools:ignore="TextContrastCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/enter_date"
+                        app:startIconDrawable="@android:drawable/ic_menu_my_calendar">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/DateText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:inputType="date"
+                            tools:ignore="TextContrastCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:hint="@string/enter_description"
+                        app:startIconDrawable="@android:drawable/ic_menu_edit">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/DescipText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textLongMessage"
+                            tools:ignore="TextContrastCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/AddPhotobtn"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginBottom="12dp"
+                        android:text="@string/add_photo"
+                        android:textAllCaps="false"
+                        app:cornerRadius="8dp"
+                        app:icon="@android:drawable/ic_menu_camera" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/Savebtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:text="@string/save_expense"
+                        android:textAllCaps="false"
+                        android:textColor="#263238"
+                        app:backgroundTint="#4CAF50"
+                        app:cornerRadius="8dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Goals Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/MonthlyGoalText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:text="@string/monthly_goals"
+                        android:textColor="#333333"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/enter_your_minimum_goal"
+                        app:startIconDrawable="@android:drawable/ic_menu_sort_by_size">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/MinGoal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            tools:ignore="TextContrastCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:hint="@string/enter_your_maximum_goal"
+                        app:startIconDrawable="@android:drawable/ic_menu_sort_alphabetically">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/MaxGoal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            tools:ignore="TextContrastCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/Savebtn2"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:text="@string/save_goal"
+                        android:textAllCaps="false"
+                        app:backgroundTint="#4CAF50"
+                        app:cornerRadius="8dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

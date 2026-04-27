@@ -34,4 +34,6 @@
     <string name="save_expense">Save Expense</string>
     <string name="save_goal">Save Goal</string>
     <string name="add_photo">Add photo</string>
+    <string name="log_new_expense">Log New Expense</string>
+    <string name="filter_by_date">Filter by Date</string>
 </resources>
